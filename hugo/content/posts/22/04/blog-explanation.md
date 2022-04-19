@@ -17,7 +17,7 @@ You either die a hero or live long enough to see yourself become the villain
 
 {{< youtube id="8WfRcnF4iZI" >}}
 
-Starting a blog is a weird & awkward thing for me. For years, I’ve laughed at _most_ (not all) people that have a tech blog. I used to view “tech bloggers” as people shilling the latest corporate IT jargon and marketing bullshit. In retrospect, it’s a bit judgemental to look at the writings over others and draw such a reductive conclusion, so I figured I’d give it a try myself. The goal here is to improve my overall understanding of different technologies and work on become a better communicator around those topics as well, starting with writing. Hopefully I can add in some clever memes along the way.
+Starting a blog is a weird & awkward thing for me. For years, I’ve laughed at _most_ (not all) people that have a tech blog. I used to view “tech bloggers” as people shilling the latest corporate IT jargon and marketing bullshit. In retrospect, it’s a bit judgemental to look at the writings of others and draw such a reductive conclusion, so I figured I’d give it a try myself. The goal here is to improve my overall understanding of different technologies and work on become a better communicator around those topics as well, starting with writing. Hopefully I can add in some clever memes along the way.
 
 # The Ogrengineered blog
 
@@ -27,13 +27,13 @@ This blog is intended to be a easy-to-deploy service that I can run in a number 
 
 ![k8s logo](/kubernetes-logo.png)
 
-In my first ogrengineering this blog, I was focused on running this blog from a kubernetes cluster as an excuse to get more familiar with kubernetes. While that’s a noble goal, using a managed kubernetes cluster ultimately proved too expensive for this purpose. While I could reasonably run a kubernetes cluster at home, I think that’s more effort than I really want to put in for the purposes of hosting a blog (I firmly believe friends don’t let friends manage kubernetes). While I fully intend to do more work focused around kubernetes, this blog has no requirement for a kubernetes cluster when a much simpler solution will work fine for this use-case.
+In my first attempt at ogrengineering this blog, I was focused on running this blog from a kubernetes cluster as an excuse to get more familiar with kubernetes. While that’s a noble goal, using a managed kubernetes cluster ultimately proved too expensive for this purpose. While I could reasonably run a kubernetes cluster at home, I think that’s more effort than I really want to put in for the purposes of hosting a blog (I firmly believe friends don’t let friends manage kubernetes). While I fully intend to do more work focused around kubernetes, this blog has no requirement for a kubernetes cluster when a much simpler solution will work fine for this use-case.
 
 ## "But there are easier ways!"
 
 I do not deny this! I'm sure there are much easier, faster, and simpler ways to achieve the goal of writing a blog, but I had some specific goals in mind:
 
-1) Create an easily deployed stateless applications that I can use for various purposes at a later date.
+1) Create an easily deployed stateless application that I can use for various purposes at a later date.
 2) Exercise a bit more control over the application for learning purposes (controlling dns, various application details, networking, etc)
 3) Maitain all my blogs/updates in source code & update with a GitOps/Infrastructure-As-Code approach to improve my perspective on these workflows.
 4) Write a blog.
@@ -42,10 +42,10 @@ That being said, this will likely take many forms over time and is intended to j
 
 # Source code
 
-[github.com/smerck/blog](https://github.com/smerck/blog) has all of the configuration for this blog, and i’ll point you to a few distinct part of the configuration of interest. I’ve set up main as a protected branch requiring me to open a pull request rather than pushing directly to the main branch. While this is “unnecessary” for me working on a solo project, I consider this to be good practice and it allows me to trigger some github actions for a branch on github before the pull request merges. I’ve added the associated configurations necessary for a public project on github:
+[github.com/smerck/blog](https://github.com/smerck/blog) has all of the configuration for this blog, and i’ll point you to a few distinct parts of the configuration that may be of interest. I’ve set up main as a protected branch requiring me to open a pull request rather than pushing directly to the main branch. While this is “unnecessary” for me working on a solo project, I consider this to be good practice and it allows me to trigger some github actions for a branch on github before the pull request merges. I’ve added the associated configurations necessary for a public project on github:
 
 * [Branch protection](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule) on main requiring PR, require passing status checks, require approval from me as a codeowner.
-* Github actions only trigger from branches I create currently. Again, this is totally expected in my solo project, but I wanted to specifically avoid having someone open a PR and trying to execute anything unexpected from a CI context, since CI may privileged/api access to certain tools. This is probably significant paranoia on my part for a _blog_, but it seemed valid.
+* Github actions only trigger from branches I create currently. Again, this is totally expected in my solo project, but I wanted to specifically avoid having someone open a PR and trying to execute anything unexpected from a CI context, since CI may have privileged/api access to certain tools. This is probably significant paranoia on my part for a _blog_, but it seemed valid.
 * Require Squash merging: I think it just makes it easier to understand exactly where changes are introduced and makes a less noisy main commit log.
 * [pre-commit configurations](https://github.com/smerck/blog/blob/main/.pre-commit-config.yaml) for convention-commit commit message checking & catching basic linting mistakes before code is committed
 
